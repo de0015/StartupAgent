@@ -191,7 +191,7 @@ This is a comprehensive enterprise-grade multi-agent framework built with LangCh
 ```env
 # Ollama Configuration
 OLLAMA_BASE_URL=http://localhost:11434
-OLLAMA_MODEL=llama2
+OLLAMA_MODEL=llama3.2
 
 # API Configuration
 API_HOST=0.0.0.0

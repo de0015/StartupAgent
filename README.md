@@ -74,16 +74,8 @@ multi_agent_system/
 
 ## Configuration
 
-The system uses environment variables for configuration. See `.env.example` for available options.
+The system uses environment variables for configuration.
 
 ## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
-5. Submit a pull request
-
-## License
-
-MIT License
+Give it a go!
+If you want to contribute, please fork the repository and submit a pull request. Contributions are welcome!

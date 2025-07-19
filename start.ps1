@@ -13,21 +13,23 @@ try {
 
 # Check if Ollama is running
 Write-Host "🔍 Checking Ollama service..." -ForegroundColor Yellow
+$ollamaRunning = $false
 try {
-    $ollamaResponse = Invoke-RestMethod -Uri "http://localhost:11434/api/version" -Method GET -TimeoutSec 5
+    $ollamaResponse = Invoke-RestMethod -Uri "http://192.168.50.20:11434/api/version" -Method GET -TimeoutSec 5
     Write-Host "✓ Ollama is running" -ForegroundColor Green
+    $ollamaRunning = $true
 } catch {
     Write-Host "⚠️  Ollama service not detected at localhost:11434" -ForegroundColor Yellow
-    Write-Host "   Starting Ollama..." -ForegroundColor Yellow
-    
-    # Try to start Ollama
+    Write-Host "   Attempting to start Ollama..." -ForegroundColor Yellow
+
     try {
         Start-Process -FilePath "ollama" -ArgumentList "serve" -WindowStyle Hidden
         Start-Sleep -Seconds 3
-        
+
         # Check again
         $ollamaResponse = Invoke-RestMethod -Uri "http://localhost:11434/api/version" -Method GET -TimeoutSec 5
         Write-Host "✓ Ollama started successfully" -ForegroundColor Green
+        $ollamaRunning = $true
     } catch {
         Write-Host "❌ Could not start Ollama. Please install Ollama from https://ollama.ai/" -ForegroundColor Red
         Write-Host "   After installation, run: ollama pull llama2" -ForegroundColor Yellow
